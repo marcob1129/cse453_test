@@ -1,27 +1,50 @@
 from flask import Flask, render_template
 from flask_socketio import SocketIO
-import random
+import pynmea2
+import meshtastic.serial_interface
+
 
 app = Flask(__name__)
 socketio = SocketIO(app, async_mode="eventlet")
+
+interface = meshtastic.serial_interface.SerialInterface()
 
 @app.route("/")
 def index():
     return render_template("index.html")
 
-def gps_stream():
-    lat = 43.0018
-    lon = -78.7895
 
-    while True:
-        lat += random.uniform(-0.0001, 0.0001)
-        lon += random.uniform(-0.0001, 0.0001)
+def parse_with_lib(sentence):
+    try:
+        msg = pynmea2.parse(sentence)
 
-        print("Sending:", lat, lon)
+        if msg.sentence_type == "GGA":
+            return msg.latitude, msg.longitude
 
-        socketio.emit("gps_update", {"lat": lat, "lon": lon})
-        socketio.sleep(2)
+    except pynmea2.ParseError:
+        return None, None
+
+    return None, None
+
+
+def on_receive(packet, interface):
+    if 'decoded' in packet and 'text' in packet['decoded']:
+        sentence = packet['decoded']['text']
+
+        lat, lon = parse_with_lib(sentence)
+
+        if lat is not None and lon is not None:
+            print("Sending:", lat, lon)
+
+            socketio.emit("gps_update", {
+                "lat": lat,
+                "lon": lon
+            })
+
+
+# Attach callback
+interface.onReceive = on_receive
+
 
 if __name__ == "__main__":
-    socketio.start_background_task(gps_stream)
     socketio.run(app, host="127.0.0.1", port=5000)
