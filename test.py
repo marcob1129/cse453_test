@@ -1,24 +1,31 @@
 import serial
-from pyubx2 import UBXReader, UBX_PROTOCOL, NMEA_PROTOCOL, RTCM3_PROTOCOL
+import meshtastic.serial_interface
+import time
 
-port = "COM9"
-baudrate = 38400
+GPS_PORT = "COM7"
+MESHTASTIC_PORT = "COM11"
+GPS_BAUD = 9600       # try 115200 if no data comes through
+MESH_BAUD = 115200
 
-ser = serial.Serial(port, baudrate, timeout=1)
+gps = serial.Serial(GPS_PORT, GPS_BAUD, timeout=1)
 
-ubr = UBXReader(
-    ser,
-    protfilter=UBX_PROTOCOL | NMEA_PROTOCOL | RTCM3_PROTOCOL
-)
+interface = meshtastic.serial_interface.SerialInterface(devPath=MESHTASTIC_PORT)
 
-try:
-    while True:
-        raw, msg = ubr.read()
-        if msg:
-            print(msg)
+def is_gga(line):
+    return line.startswith("$GPGGA") or line.startswith("$GNGGA")
 
-except KeyboardInterrupt:
-    print("Streaming stopped")
+while True:
+    try:
+        line = gps.readline().decode(errors="ignore").strip()
 
-finally:
-    ser.close()
+        if not line:
+            continue
+
+        if is_gga(line):
+            print(f"[SEND] {line}")
+            interface.sendText(line)
+            time.sleep(2)  # rate limit to avoid flooding mesh
+
+    except Exception as e:
+        print(f"[ERROR] {e}")
+        time.sleep(1)
