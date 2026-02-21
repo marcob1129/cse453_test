@@ -19,7 +19,7 @@ def parse_with_lib(sentence):
     try:
         msg = pynmea2.parse(sentence)
         if msg.sentence_type == "GGA":
-            return msg.latitude, msg.longitude, msg.gps_qual
+            return msg.latitude, msg.longitude
     except pynmea2.ParseError:
         print("[PARSE ERROR] Invalid NMEA:", sentence)
     return None, None, None
@@ -28,9 +28,9 @@ def on_receive(packet, interface=None):
 
     sentence = packet['decoded']['text']
 
-    lat, lon, fix = parse_with_lib(sentence)
+    lat, lon = parse_with_lib(sentence)
 
-    print(f"[PARSED] Lat: {lat:.6f}, Lon: {lon:.6f}, Fix: {fix}")
+    print(f"[PARSED] Lat: {lat:.6f}, Lon: {lon:.6f}")
     socketio.emit("gps_update", {"lat": lat, "lon": lon})
 
 pub.subscribe(on_receive, "meshtastic.receive.text")
@@ -42,5 +42,4 @@ def heartbeat():
 if __name__ == "__main__":
     import threading
     threading.Thread(target=heartbeat, daemon=True).start()
-    print("[START] Flask server running on http://127.0.0.1:5000")
     socketio.run(app, host="127.0.0.1", port=5000, use_reloader=False, allow_unsafe_werkzeug=True)
