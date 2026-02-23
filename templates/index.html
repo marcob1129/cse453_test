@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="/static/leaflet.css">
     <script src="/static/leaflet.js"></script>
     <script src="/static/socket.io.min.js"></script>
-
+    
     <style>
         html, body {
             margin: 0;
@@ -18,6 +18,29 @@
             background-color: white;
         }
 
+        #controls {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            z-index: 1000;
+        }
+
+        #button {
+            padding: 14px 22px;
+            background-color: gray;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+
+        #button:hover {
+            background-color: darkgray;
+        }
+    
         #map {
             width: 100vw;
             height: 100vh;
@@ -32,8 +55,7 @@
 <div id="map"></div>
 
 <div id="controls">
-    <input type="text" id="msgInput" placeholder="COME BACK TO BASE">
-    <button onclick="sendMessage()">Send</button>
+    <button id="button" onclick="sendMessage()">COME TO BASE</button>
 </div>
 
 <script>
@@ -43,18 +65,11 @@
     });
 
     function sendMessage() {
-        var msg = document.getElementById("msgInput").value;
-
-        if (!msg) return;
-
         socket.emit("send_message", {
-            text: msg
+            text: "COME TO BASE"
         });
-
-        document.getElementById("msgInput").value = "";
     }
 
-    //southwest, northeast
     var imageBounds = [
         [43.00393007104246, -78.77869348098584],
         [42.99696023197851, -78.79764062766652]

@@ -1,16 +1,24 @@
 import serial
 import meshtastic.serial_interface
+from pubsub import pub
 import time
 
 GPS_PORT = "COM7"
 MESHTASTIC_PORT = "COM11"
-GPS_BAUD = 9600       # try 115200 if no data comes through
+GPS_BAUD = 9600
 MESH_BAUD = 115200
 
 gps = serial.Serial(GPS_PORT, GPS_BAUD, timeout=1)
-
 interface = meshtastic.serial_interface.SerialInterface(devPath=MESHTASTIC_PORT)
 
+def on_receive(packet, interface=None):
+    try:
+        text = packet['decoded']['text']
+        print(f"[INCOMING] {text}")
+    except Exception as e:
+        print(f"[ERROR] {e}")
+
+pub.subscribe(on_receive, "meshtastic.receive.text")
 
 def is_gga(line):
     return line.startswith("$GPGGA") or line.startswith("$GNGGA")
@@ -25,7 +33,7 @@ while True:
         if is_gga(line):
             print(f"[SEND] {line}")
             interface.sendText(line)
-            time.sleep(2)  # rate limit to avoid flooding mesh
+            time.sleep(10)
 
     except Exception as e:
         print(f"[ERROR] {e}")

@@ -4,6 +4,7 @@ import pynmea2
 import meshtastic.serial_interface
 from pubsub import pub
 import time
+from datetime import datetime
 
 app = Flask(__name__)
 socketio = SocketIO(app, async_mode="threading", cors_allowed_origins="*")
@@ -20,8 +21,9 @@ def handle_send_message(data):
     text = data.get("text", "")
 
     if text:
-        print("[Button]", text)
+        print("[BUTTON]", text)
         interface.sendText(text)
+
 
 def parse_with_lib(sentence):
     try:
@@ -29,8 +31,8 @@ def parse_with_lib(sentence):
         if msg.sentence_type == "GGA":
             return msg.latitude, msg.longitude
     except pynmea2.ParseError:
-        print("[PARSE ERROR] Invalid NMEA:", sentence)
-    return None, None, None
+        print("[ERROR] Invalid NMEA:", sentence)
+    return None, None
 
 def on_receive(packet, interface=None):
 
