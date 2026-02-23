@@ -15,6 +15,14 @@ interface = meshtastic.serial_interface.SerialInterface(devPath=PORT, noNodes=Tr
 def index():
     return render_template("index.html")
 
+@socketio.on("send_message")
+def handle_send_message(data):
+    text = data.get("text", "")
+
+    if text:
+        print("[Button]", text)
+        interface.sendText(text)
+
 def parse_with_lib(sentence):
     try:
         msg = pynmea2.parse(sentence)

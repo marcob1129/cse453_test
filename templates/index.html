@@ -31,12 +31,30 @@
 
 <div id="map"></div>
 
+<div id="controls">
+    <input type="text" id="msgInput" placeholder="COME BACK TO BASE">
+    <button onclick="sendMessage()">Send</button>
+</div>
+
 <script>
     var map = L.map("map", {
         zoomControl: true,
         attributionControl: false
     });
 
+    function sendMessage() {
+        var msg = document.getElementById("msgInput").value;
+
+        if (!msg) return;
+
+        socket.emit("send_message", {
+            text: msg
+        });
+
+        document.getElementById("msgInput").value = "";
+    }
+
+    //southwest, northeast
     var imageBounds = [
         [43.00393007104246, -78.77869348098584],
         [42.99696023197851, -78.79764062766652]

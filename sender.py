@@ -11,6 +11,7 @@ gps = serial.Serial(GPS_PORT, GPS_BAUD, timeout=1)
 
 interface = meshtastic.serial_interface.SerialInterface(devPath=MESHTASTIC_PORT)
 
+
 def is_gga(line):
     return line.startswith("$GPGGA") or line.startswith("$GNGGA")
 
