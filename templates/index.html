@@ -40,6 +40,10 @@
         #button:hover {
             background-color: darkgray;
         }
+
+        #button:active{
+            background-color: rgb(91, 90, 90);
+        }
     
         #map {
             width: 100vw;
@@ -71,18 +75,18 @@
     }
 
     var imageBounds = [
-        [43.00393007104246, -78.77869348098584],
-        [42.99696023197851, -78.79764062766652]
+        [42.999327842500016, -78.79145975221716], // southwest
+        [43.002117815552694, -78.78467616117943]      // northeast
     ];
 
     L.imageOverlay("/static/map.png", imageBounds).addTo(map);
     map.fitBounds(imageBounds);
 
-    var marker = L.circleMarker([43.0018, -78.7895], {
+    var marker = L.circleMarker([43.000680375077756,-78.78762378446139], {
         color: 'blue',
         fillColor: '#30f',
         fillOpacity: 0.8,
-        radius: 10,
+        radius: 5,
         weight: 2
     }).addTo(map);
 
