@@ -5,15 +5,18 @@
 class GPSProcessor : public rclcpp::Node
 {
 public:
-    GPSProcessor() : Node("gps_processor")     
+    GPSProcessor() : Node("gps_processor")     //gps_processor node
     {
-        
+        // subscribes to the /fix topic and calls gpsCallback when a new message is received
         subscription_ = this->create_subscription<sensor_msgs::msg::NavSatFix>("/fix",10,std::bind(&GPSProcessor::gpsCallback,this,std::placeholders::_1));
     }
 
 private:
+    // subscription variable
     rclcpp::Subscription<sensor_msgs::msg::NavSatFix>::SharedPtr subscription_;
 
+
+    //function is called when a new GPS message is received
     void gpsCallback(const sensor_msgs::msg::NavSatFix::SharedPtr msg)
     {
         double lat = msg->latitude;
