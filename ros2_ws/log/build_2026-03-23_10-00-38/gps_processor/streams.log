@@ -1,0 +1,51 @@
+[0.011s] Invoking command in '/home/marcobia/Desktop/VSCode/CSE_453/ros2_ws/build/gps_processor': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake /home/marcobia/Desktop/VSCode/CSE_453/ros2_ws/src/gps_processor -DCMAKE_VERBOSE_MAKEFILE=ON -DCMAKE_INSTALL_PREFIX=/home/marcobia/Desktop/VSCode/CSE_453/ros2_ws/install/gps_processor
+[0.024s] -- Found ament_cmake: 1.3.11 (/opt/ros/humble/share/ament_cmake/cmake)
+[0.149s] -- Found rclcpp: 16.0.12 (/opt/ros/humble/share/rclcpp/cmake)
+[0.180s] -- Found rosidl_generator_c: 3.1.6 (/opt/ros/humble/share/rosidl_generator_c/cmake)
+[0.183s] -- Found rosidl_adapter: 3.1.6 (/opt/ros/humble/share/rosidl_adapter/cmake)
+[0.190s] -- Found rosidl_generator_cpp: 3.1.6 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)
+[0.201s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.214s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[0.252s] -- Found rmw_implementation_cmake: 6.1.2 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)
+[0.253s] -- Found rmw_fastrtps_cpp: 6.2.7 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)
+[0.361s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[0.428s] -- Found sensor_msgs: 4.8.0 (/opt/ros/humble/share/sensor_msgs/cmake)
+[0.467s] -- Found ament_lint_auto: 0.12.12 (/opt/ros/humble/share/ament_lint_auto/cmake)
+[0.544s] -- Added test 'cppcheck' to perform static code analysis on C / C++ code
+[0.544s] -- Configured cppcheck include dirs: 
+[0.544s] -- Configured cppcheck exclude dirs and/or files: 
+[0.545s] -- Added test 'lint_cmake' to check CMake code style
+[0.545s] -- Added test 'uncrustify' to check C / C++ code style
+[0.545s] -- Configured uncrustify additional arguments: 
+[0.545s] -- Added test 'xmllint' to check XML markup files
+[0.548s] -- Configuring done
+[0.551s] -- Generating done
+[0.554s] -- Build files have been written to: /home/marcobia/Desktop/VSCode/CSE_453/ros2_ws/build/gps_processor
+[0.568s] Invoked command in '/home/marcobia/Desktop/VSCode/CSE_453/ros2_ws/build/gps_processor' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake /home/marcobia/Desktop/VSCode/CSE_453/ros2_ws/src/gps_processor -DCMAKE_VERBOSE_MAKEFILE=ON -DCMAKE_INSTALL_PREFIX=/home/marcobia/Desktop/VSCode/CSE_453/ros2_ws/install/gps_processor
+[0.569s] Invoking command in '/home/marcobia/Desktop/VSCode/CSE_453/ros2_ws/build/gps_processor': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /home/marcobia/Desktop/VSCode/CSE_453/ros2_ws/build/gps_processor -- -j4 -l4
+[0.590s] /usr/bin/cmake -S/home/marcobia/Desktop/VSCode/CSE_453/ros2_ws/src/gps_processor -B/home/marcobia/Desktop/VSCode/CSE_453/ros2_ws/build/gps_processor --check-build-system CMakeFiles/Makefile.cmake 0
+[0.608s] /usr/bin/cmake -E cmake_progress_start /home/marcobia/Desktop/VSCode/CSE_453/ros2_ws/build/gps_processor/CMakeFiles /home/marcobia/Desktop/VSCode/CSE_453/ros2_ws/build/gps_processor//CMakeFiles/progress.marks
+[0.617s] /usr/bin/gmake  -f CMakeFiles/Makefile2 all
+[0.618s] gmake[1]: Entering directory '/home/marcobia/Desktop/VSCode/CSE_453/ros2_ws/build/gps_processor'
+[0.618s] gmake[1]: Nothing to be done for 'all'.
+[0.618s] gmake[1]: Leaving directory '/home/marcobia/Desktop/VSCode/CSE_453/ros2_ws/build/gps_processor'
+[0.618s] /usr/bin/cmake -E cmake_progress_start /home/marcobia/Desktop/VSCode/CSE_453/ros2_ws/build/gps_processor/CMakeFiles 0
+[0.629s] Invoked command in '/home/marcobia/Desktop/VSCode/CSE_453/ros2_ws/build/gps_processor' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /home/marcobia/Desktop/VSCode/CSE_453/ros2_ws/build/gps_processor -- -j4 -l4
+[0.640s] Invoking command in '/home/marcobia/Desktop/VSCode/CSE_453/ros2_ws/build/gps_processor': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --install /home/marcobia/Desktop/VSCode/CSE_453/ros2_ws/build/gps_processor
+[0.646s] -- Install configuration: ""
+[0.646s] -- Up-to-date: /home/marcobia/Desktop/VSCode/CSE_453/ros2_ws/install/gps_processor/share/ament_index/resource_index/package_run_dependencies/gps_processor
+[0.647s] -- Up-to-date: /home/marcobia/Desktop/VSCode/CSE_453/ros2_ws/install/gps_processor/share/ament_index/resource_index/parent_prefix_path/gps_processor
+[0.647s] -- Up-to-date: /home/marcobia/Desktop/VSCode/CSE_453/ros2_ws/install/gps_processor/share/gps_processor/environment/ament_prefix_path.sh
+[0.647s] -- Installing: /home/marcobia/Desktop/VSCode/CSE_453/ros2_ws/install/gps_processor/share/gps_processor/environment/ament_prefix_path.dsv
+[0.647s] -- Up-to-date: /home/marcobia/Desktop/VSCode/CSE_453/ros2_ws/install/gps_processor/share/gps_processor/environment/path.sh
+[0.647s] -- Installing: /home/marcobia/Desktop/VSCode/CSE_453/ros2_ws/install/gps_processor/share/gps_processor/environment/path.dsv
+[0.647s] -- Up-to-date: /home/marcobia/Desktop/VSCode/CSE_453/ros2_ws/install/gps_processor/share/gps_processor/local_setup.bash
+[0.647s] -- Up-to-date: /home/marcobia/Desktop/VSCode/CSE_453/ros2_ws/install/gps_processor/share/gps_processor/local_setup.sh
+[0.647s] -- Up-to-date: /home/marcobia/Desktop/VSCode/CSE_453/ros2_ws/install/gps_processor/share/gps_processor/local_setup.zsh
+[0.647s] -- Installing: /home/marcobia/Desktop/VSCode/CSE_453/ros2_ws/install/gps_processor/share/gps_processor/local_setup.dsv
+[0.648s] -- Installing: /home/marcobia/Desktop/VSCode/CSE_453/ros2_ws/install/gps_processor/share/gps_processor/package.dsv
+[0.648s] -- Up-to-date: /home/marcobia/Desktop/VSCode/CSE_453/ros2_ws/install/gps_processor/share/ament_index/resource_index/packages/gps_processor
+[0.648s] -- Up-to-date: /home/marcobia/Desktop/VSCode/CSE_453/ros2_ws/install/gps_processor/share/gps_processor/cmake/gps_processorConfig.cmake
+[0.648s] -- Up-to-date: /home/marcobia/Desktop/VSCode/CSE_453/ros2_ws/install/gps_processor/share/gps_processor/cmake/gps_processorConfig-version.cmake
+[0.648s] -- Up-to-date: /home/marcobia/Desktop/VSCode/CSE_453/ros2_ws/install/gps_processor/share/gps_processor/package.xml
+[0.650s] Invoked command in '/home/marcobia/Desktop/VSCode/CSE_453/ros2_ws/build/gps_processor' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --install /home/marcobia/Desktop/VSCode/CSE_453/ros2_ws/build/gps_processor
