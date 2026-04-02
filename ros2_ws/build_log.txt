@@ -1,0 +1,4 @@
+Starting >>> gps_processor
+Finished <<< gps_processor [0.67s]
+
+Summary: 1 package finished [0.99s]
